@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filtered Reviews</title>
+</head>
+<body>
+    <h1>Filter Reviews</h1>
+    <form method="GET" action="/filter-reviews">
+        <label for="prioritize-text">Prioritize by Text:</label>
+        <select id="sort-text" name="sort_text">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <label for="sort-rating">Order by rating:</label>
+        <select id="sort-rating" name="sort_rating">
+            <option value="highest">Highest First</option>
+            <option value="lowest">Lowest First</option>
+        </select>
+
+        <label for="sort-date">Order by date:</label>
+        <select id="sort-date" name="sort_date">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+        </select>
+
+        <label for="min-rating">Minimum Rating:</label>
+        <select id="min-rating" name="min_rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <button class="button button2" type="submit">Filter</button>
+    </form>
+
+    <ul>
+        {% for review in reviews %}
+            <li>
+                <strong>Rating: {{ review.rating }}</strong><br>
+                <span>Date: {{ review.date }}</span><br>
+                <span>Text: {{ review.text }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+    <style>
+        .button {
+          background-color: #5d92e8;
+          border: none;
+          color: white;
+          padding: 10px 15px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+          border-radius: 8px;
+        }
+
+        .button2:hover {
+          box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        </style>
+</body>
+</html>
